@@ -1,8 +1,7 @@
 import Head from 'next/head'
 import { Heading } from '@chakra-ui/react'
 
-export default function Home(props) {
-  console.log(props)
+export default function Home({products}) {
   return (
     <>
       <Head>
@@ -12,12 +11,19 @@ export default function Home(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Heading as="h3" size="sm">Hello world</Heading>
+        <ol>
+            {
+              products.map(product=>{
+                return <li key={product.id}>{product.title}</li>
+              })
+            }
+        </ol>
       </main>
     </>
   )
 }
 
+//Server side
 export async function getServerSideProps(context){
   const results = await fetch('https://fakestoreapi.com/products')
   .then(res=>res.json())
