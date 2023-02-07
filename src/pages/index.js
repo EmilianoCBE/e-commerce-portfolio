@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { Heading } from '@chakra-ui/react'
 
 export default function Home() {
   return (
@@ -10,7 +11,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        
+        <Heading>Hello world</Heading>
       </main>
     </>
   )
