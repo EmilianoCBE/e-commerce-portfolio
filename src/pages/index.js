@@ -1,5 +1,8 @@
 import Head from 'next/head'
-import { Heading } from '@chakra-ui/react'
+
+import { Button } from '@chakra-ui/react'
+import { Header } from '@/components/Header'
+import { TopBar } from '@/components/TopBar'
 
 export default function Home({products}) {
   return (
@@ -11,10 +14,13 @@ export default function Home({products}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+        <TopBar />
+        <Header />
+        <Button>Button</Button>
         <ol>
             {
               products.map(product=>{
-                return <li key={product.id}>{product.title}</li>
+                return <li key={product.id}><strong>{product.title}</strong></li>
               })
             }
         </ol>
