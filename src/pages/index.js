@@ -17,13 +17,11 @@ export default function Home({products}) {
         <TopBar />
         <Header />
         <Button>Button</Button>
-        <ol>
-            {
-              products.map(product=>{
-                return <li key={product.id}><strong>{product.title}</strong></li>
-              })
-            }
-        </ol>
+        {<ol>
+          {products.map(product => {
+            return <li key={product.id}><strong>{product.title}</strong></li>
+          })}
+        </ol>}
       </main>
     </>
   )
@@ -31,12 +29,16 @@ export default function Home({products}) {
 
 //Server side
 export async function getServerSideProps(context){
-  const results = await fetch('https://fakestoreapi.com/products')
-  .then(res=>res.json())
-  
+  const products = await fetch("https://fakestoreapi.com/products")
+    .then(res => res.json())
+  const categories = await fetch("https://fakestoreapi.com/products/categories")
+    .then(res => res.json())
+
+
   return {
     props: {
-      results
+      products,
+      categories
     }
   }
 }
