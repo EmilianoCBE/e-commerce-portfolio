@@ -6,10 +6,10 @@ import { slugify } from '@/utils/slugify'
 
 import { Grid, GridItem } from '@chakra-ui/react'
 
-export function HomeCategories(props) {
+export function HomeCategories({categories}) {
     return (
         <Grid templateColumns="540px 255px 255px" gap="30px" templateRows="200px 260px">
-            {props.categories.map((cat, key) => {
+            {categories.map((cat, key) => {
                     const slug = slugify(cat);
                     const imageUrl = `/pic-categories-${slug}.jpg`;
                     let props = {
@@ -22,7 +22,7 @@ export function HomeCategories(props) {
                         props.rowSpan = 2;
                     }
 
-                    if (key === props.categories.length - 1) {
+                    if (key === categories.length - 1) {
                         props.colSpan = 2;
                     }
 
