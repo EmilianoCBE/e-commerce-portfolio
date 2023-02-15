@@ -8,7 +8,7 @@ import { Grid, GridItem } from '@chakra-ui/react'
 
 export function HomeCategories(props) {
     return (
-        <Grid templateColumns="540px 255px 255px" gap="1rem" templateRows="200px 260px">
+        <Grid templateColumns="540px 255px 255px" gap="30px" templateRows="200px 260px">
             {props.categories.map((cat, key) => {
                     const slug = slugify(cat);
                     const imageUrl = `/pic-categories-${slug}.jpg`;
