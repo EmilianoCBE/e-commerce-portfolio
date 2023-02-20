@@ -5,8 +5,8 @@ import { TopBar } from '@/components/TopBar'
 import { HomeCategories } from '@/components/HomeCategories'
 import { AdvantageSection } from '@/components/AdvantageSection'
 
-import { AspectRatio, Box, Container, Text } from '@chakra-ui/react'
-import Image from 'next/image'
+import { Box, Container, Flex, SimpleGrid, Text } from '@chakra-ui/react'
+import { ProductCard } from '@/components/ProductCard'
 
 export default function Home({products, categories}) {
   return (
@@ -23,25 +23,26 @@ export default function Home({products, categories}) {
           <Header />
         </Box>
       <main>
-        <Container size="lg">
+        <Container size={{
+          lg:'lg',
+        }}>
           <HomeCategories categories={categories}/>
 
           <AdvantageSection />
+          
+          {<SimpleGrid minChildWidth='255px' spacing='1.85rem'>
+            {products.map(product => {
+              return <ProductCard
+                title={product.title}
+                image={product.image}
+                price={product.price}
+                rating={product.rating}
+                key={product.id}
+              />
+            })}
+          </SimpleGrid>} 
         </Container> 
 
-        <Box margin="2rem auto" width="255px">
-          <AspectRatio position="relative" ratio="1" maxWidth="100%">
-            <Image src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" alt='' fill="true" style={{objectFit: 'contain'}}/>
-          </AspectRatio>
-          <Text>Bagpack</Text>
-          <Text>$38.00</Text>
-        </Box>
-
-        {/* {<ol>
-          {products.map(product => {
-            return <li key={product.id}><strong>{product.title}</strong></li>
-          })}
-        </ol>} */}
       </main>
     </>
   )
