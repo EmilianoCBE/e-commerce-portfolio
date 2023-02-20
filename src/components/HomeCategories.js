@@ -10,13 +10,14 @@ export function HomeCategories({categories}) {
     return (
         <Grid templateColumns={{
             base: '1fr 1fr',
-            sm: '540px 255px 255px'
+            sm: '2fr 1fr 1fr'
         }} templateRows={{
             base: '130px 154px 130px',
             sm: '200px 260px'
         }} gap={{
             base: '0.5rem',
-            sm: '30px'
+            md: '1rem',
+            lg: '2rem'
         }} templateAreas={{
             base: `
                 'cat1 cat1'
