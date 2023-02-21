@@ -29,19 +29,25 @@ export default function Home({products, categories}) {
           <HomeCategories categories={categories}/>
 
           <AdvantageSection />
-          
-          {<SimpleGrid minChildWidth='255px' spacing='1.85rem'>
+
+        </Container> 
+        
+          {<SimpleGrid minChildWidth={{
+            lg:'255px'
+          }} 
+            overflowX='scroll'
+            gridTemplateColumns='repeat(auto-fit, 255px)' 
+            gridAutoColumns='255px'
+            gridAutoFlow='column'
+            spacing='1.85rem'
+            scrollSnapType='x mandatory'
+            >
             {products.map(product => {
-              return <ProductCard
-                title={product.title}
-                image={product.image}
-                price={product.price}
-                rating={product.rating}
-                key={product.id}
-              />
+              return <Box key={product.id} scrollSnapAlign='center'>
+                      <ProductCard {...product}/>
+                     </Box>
             })}
           </SimpleGrid>} 
-        </Container> 
 
       </main>
     </>
