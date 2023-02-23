@@ -13,7 +13,7 @@ import Image from 'next/image'
 import bannerSeason from '/public/banner-new-season.jpeg'
 import bannerStyle from '/public/banner-new-style.jpeg'
 
-export default function Home({products, categories, groupProductsByCategory}) {
+export default function Home({products, categories, productsGroupedByCategory}) {
   return (
     <>
       <Head>
@@ -37,28 +37,31 @@ export default function Home({products, categories, groupProductsByCategory}) {
 
         </Container> 
         
-        <Container maxW={{
-          base: '100%',
-          md: '1110px'
-        }}>
-          {Object.entries(groupProductsByCategory).map(([category, products])=>{
+        <Container
+          maxW={{
+            base: '100%',
+            md: '1110px',
+          }}
+          paddingX="0"
+        >
+          {Object.entries(productsGroupedByCategory).map(([category, products]) => {
             return (
-                <Box key={category} marginBottom='4rem'>
-                  <Heading 
-                    as='h2' 
-                    size='md' 
-                    textTransform='uppercase' m={{
-                      base: '0 0 1rem 1rem',
-                      md: '0 0 1.5rem'
-                    }}
-                  >
-                    {category}
-                  </Heading>
-                  <HomeProductsGrid products={products}/>
-                </Box>
-              )
-            })
-          }
+              <Box key={category} marginBottom="4rem">
+                <Heading
+                  as="h2"
+                  size="md"
+                  textTransform="uppercase"
+                  margin={{
+                    base: '0 0 1rem 1rem',
+                    md: '0 0 1.5rem',
+                  }}
+                >
+                  {category}
+                </Heading>
+                <HomeProductsGrid products={products} />
+              </Box>
+            );
+          })}
         </Container>
         
         <Container size={{
