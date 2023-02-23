@@ -5,10 +5,13 @@ import { TopBar } from '@/components/TopBar'
 import { HomeCategories } from '@/components/HomeCategories'
 import { AdvantageSection } from '@/components/AdvantageSection'
 
-import { Box, Container, Flex, Grid, Heading, SimpleGrid, Text } from '@chakra-ui/react'
-import { ProductCard } from '@/components/ProductCard'
+import { Box, Container, Heading, SimpleGrid, Text } from '@chakra-ui/react'
 import { groupProductsByCategory } from '@/utils/groupProductsByCategory'
 import { HomeProductsGrid } from '@/components/HomeProductsGrid'
+import Image from 'next/image'
+
+import bannerSeason from '/public/banner-new-season.jpeg'
+import bannerStyle from '/public/banner-new-style.jpeg'
 
 export default function Home({products, categories, groupProductsByCategory}) {
   return (
@@ -57,7 +60,21 @@ export default function Home({products, categories, groupProductsByCategory}) {
             })
           }
         </Container>
-
+        
+        <Container size={{
+          lg:'lg',
+        }}>
+          <SimpleGrid 
+            minChildWidth='255px' 
+            spacing={{
+              base: '1rem',
+              md: '2rem'
+            }}
+          >
+            <Image src={bannerSeason} alt=''/>
+            <Image src={bannerStyle}  alt=''/>
+          </SimpleGrid>
+        </Container>
       </main>
     </>
   )
