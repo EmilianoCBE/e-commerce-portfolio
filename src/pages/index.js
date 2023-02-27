@@ -88,6 +88,10 @@ export default function Home({products, categories, productsGroupedByCategory}) 
             </PromoBanner>
           </SimpleGrid>
         </Container>
+        
+        <Container>
+
+        </Container>
       </main>
     </>
   )
