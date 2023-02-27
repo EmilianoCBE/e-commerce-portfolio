@@ -2,7 +2,8 @@ import { Grid, Box } from "@chakra-ui/react";
 import { ProductCard } from "./ProductCard";
 
 export function HomeProductsGrid(props) {
-    return (<Grid 
+    return (
+            <Grid 
                 overflowX='scroll' 
                 gridTemplateColumns={{
                     base: 'repeat(auto-fit, 255px)',
@@ -22,12 +23,14 @@ export function HomeProductsGrid(props) {
                                     base: i === 0 ? '1rem' : '0',
                                     md: '0'
                                 }} 
-                                key={product.id}                                     scrollSnapAlign='center' 
+                                key={product.id}                                    
+                                scrollSnapAlign='center' 
                                 border='solid 1px' 
                                 borderColor='gray.200' 
                                 padding='1rem'
                             >
-                                <ProductCard {...product} />                                </Box>;
+                                <ProductCard {...product} />                 
+                            </Box>;
                 })}
             </Grid>
     );
