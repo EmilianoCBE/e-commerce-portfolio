@@ -42,7 +42,7 @@ const theme = extendTheme({
     }
   },
   fonts: {
-    heading: `'Spartna', sans-serif`,
+    heading: `'Spartan', sans-serif`,
     body: `'Spartan', sans-serif`,
   },
   components: {
