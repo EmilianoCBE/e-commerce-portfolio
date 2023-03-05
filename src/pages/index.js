@@ -30,9 +30,7 @@ export default function Home({products, categories, productsGroupedByCategory}) 
           <Header />
         </Box>
       <main>
-        <Container size={{
-          lg:'lg',
-        }}>
+        <Container>
           <HomeCategories categories={categories}/>
 
           <AdvantageSection />
@@ -66,9 +64,7 @@ export default function Home({products, categories, productsGroupedByCategory}) 
           })}
         </Container>
         
-        <Container size={{
-          lg:'lg',
-        }}>
+        <Container>
           <SimpleGrid 
             minChildWidth='255px' 
             spacing={{
@@ -114,7 +110,7 @@ export default function Home({products, categories, productsGroupedByCategory}) 
                     borderRadius='0' 
                     type='email' 
                     placeholder='Enter your email' 
-                    bgColor='gray.700'/>
+                    bgColor='gray.100'/>
                 </FormControl>
                 <Button bgColor='black' height='4rem' w='100%' size='lg' >
                   Subscribe

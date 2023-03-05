@@ -37,9 +37,7 @@ const menu = [
 export function Header() {
   return (
   <Box w="100%" as="header" borderBottom="solid 2px" borderColor="gray.100">
-    <Container as={Flex} justifyContent="space-between" alignItems="center" size={{
-        lg:'lg',
-      }}>
+    <Container as={Flex} justifyContent="space-between" alignItems="center">
       <Flex gap='0.5rem' margin="1rem 0">
         <Show below='lg'>
           <Box as='nav'>
