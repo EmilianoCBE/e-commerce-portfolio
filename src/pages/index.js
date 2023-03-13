@@ -93,14 +93,14 @@ export default function Home({products, categories, productsGroupedByCategory}) 
           maxWidth='100%'
           position='relative'
         >
-          <Box position='absolute'>
+          <Box position='absolute' right='50%' transform='translateX(470px)'>
             <Image src={menWalking} alt=''/>
           </Box>
-          <Box position='absolute'>
+          <Box position='absolute' bottom='0' left='50%' transform='translateX(-530px)'>
             <Image src={womanStanding} alt=''/>
           </Box>
           <Flex height='28.75rem' maxWidth='33.25rem' m='auto' as='article' bgColor='white' p='2rem' >
-            <Grid maxWidth='22rem' m='auto' gap='2rem' textAlign='center'>
+            <Grid maxWidth='21.35rem' m='auto' gap='2rem' textAlign='center'>
               <header>
                 <Heading size='sm' textTransform='uppercase' color='gray'>
                   Special Offer
