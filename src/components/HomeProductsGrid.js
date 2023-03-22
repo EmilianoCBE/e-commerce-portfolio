@@ -1,4 +1,6 @@
+import { slugify } from "@/utils/slugify";
 import { Grid, Box } from "@chakra-ui/react";
+import Link from "next/link";
 import { ProductCard } from "./ProductCard";
 
 export function HomeProductsGrid(props) {
@@ -18,6 +20,7 @@ export function HomeProductsGrid(props) {
                 alignItems='stretch'
             >
                 {props.products.map((product, i) => {
+                    const slug = slugify(product.title)
                     return <Box 
                                 marginLeft={{
                                     base: i === 0 ? '1rem' : '0',
@@ -29,7 +32,9 @@ export function HomeProductsGrid(props) {
                                 borderColor='gray.200' 
                                 padding='1rem'
                             >
-                                <ProductCard {...product} />                 
+                                <Link href={`/product/${slug}-${product.id}`}>
+                                    <ProductCard {...product} />                 
+                                </Link>
                             </Box>;
                 })}
             </Grid>

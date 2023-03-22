@@ -8,12 +8,12 @@ export function SubscribeSection() {
     return (
         <Container bg='linear-gradient(180deg, #F3F2F2 0%, #DCDBDB 100%)' 
             p={{
-            base: '1.5rem',
-            md: '3.5rem'
+                base: '1.5rem',
+                md: '3.5rem'
             }} maxWidth='100%' position='relative'
         >
             <Box position='absolute' top={{
-                base: 'calc(-242px +1.5rem)',
+                base: 'calc(-236px +1.5rem)',
                 md: 'initial'
             }} right={{
                 base: '32px',
@@ -22,13 +22,13 @@ export function SubscribeSection() {
                 md: 'translateX(470px)'
             }} width={{
                 base: '99px',
-                md: '524px'
+                md: '219px',
             }} height={{
                 base: '236px',
-                md: '219px'
+                md: '524px',
             }}
             >
-                <Image src={menWalking} alt='' />
+                <Image src={menWalking} alt='' style={{objectFit: 'cover'}} fill={true}/>
             </Box>
             <Box position='absolute' top={{
                 base: 'calc(-242px +1.5rem)',
@@ -36,23 +36,29 @@ export function SubscribeSection() {
             }} bottom={{
                 md: '0'
             }} left={{
-                base: '24px',
+                base: '1.5rem',
                 md: '50%'
             }} transform={{
                 md: 'translateX(-530px)'
             }} width={{
                 base: '128px',
-                md: '545px'
+                md: '311px',
             }} height={{
-                base: '128px',
-                md: '311px'
+                base: '242px',
+                md: '545px',
             }}
             >
                 <Image src={womanStanding} style={{objectFit: 'cover'}} fill={true} alt='' />
             </Box>
             <Flex height={{
-                md: '28.75rem'
-            }} maxWidth='33.25rem' m='auto' as='article' bgColor='white' p='2rem'>
+                    md: '28.75rem'
+                }} 
+                maxWidth='33.25rem' 
+                m='auto' 
+                as='article' 
+                bgColor='white' 
+                p='2rem'
+            >
             <Grid maxWidth='21.25rem' m='auto' gap='2rem' textAlign='center'>
               <header>
                 <Heading size='sm' textTransform='uppercase' color='gray'>

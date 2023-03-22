@@ -115,17 +115,17 @@ export default function Home({products, categories, productsGroupedByCategory}) 
             }}
           >
             <BlogCard 
-              // image={}
+              image={blogPic1}
               title='The easiest way to break'
               summary='lorem ipsum'
             />
             <BlogCard 
-              // image={}
+              image={blogPic2}
               title='The easiest way to break'
               summary='lorem ipsum'
             />
             <BlogCard 
-              // image={}
+              image={blogPic3}
               title='The easiest way to break'
               summary='lorem ipsum'
             />
