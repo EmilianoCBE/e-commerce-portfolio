@@ -1,11 +1,9 @@
 import Head from 'next/head'
 
-import { Header } from '@/components/Header'
-import { TopBar } from '@/components/TopBar'
 import { HomeCategories } from '@/components/HomeCategories'
 import { AdvantageSection } from '@/components/AdvantageSection'
 
-import { Box, Button, Container, Flex, FormControl, Grid, Heading, Input, SimpleGrid, Text } from '@chakra-ui/react'
+import { Box, Container, Heading, SimpleGrid, Text } from '@chakra-ui/react'
 import { groupProductsByCategory } from '@/utils/groupProductsByCategory'
 import { HomeProductsGrid } from '@/components/HomeProductsGrid'
 
@@ -20,6 +18,8 @@ import { BlogCard } from '@/components/BlogCard'
 import blogPic1 from '/public/blog-pic-01.jpg'
 import blogPic2 from '/public/blog-pic-02.jpg'
 import blogPic3 from '/public/blog-pic-03.jpg'
+import { TopBar } from '@/components/TopBar'
+import { Header } from '@/components/Header'
 
 export default function Home({products, categories, productsGroupedByCategory}) {
   return (
@@ -31,10 +31,6 @@ export default function Home({products, categories, productsGroupedByCategory}) 
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-        <TopBar />
-        <Box marginBottom="2rem">
-          <Header />
-        </Box>
       <main>
         <Container>
           <HomeCategories categories={categories}/>

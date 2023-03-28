@@ -1,4 +1,6 @@
-import { ChakraProvider } from '@chakra-ui/react'
+import { Header } from '@/components/Header'
+import { TopBar } from '@/components/TopBar'
+import { Box, ChakraProvider } from '@chakra-ui/react'
 
 import { extendTheme } from '@chakra-ui/react'
 
@@ -76,6 +78,10 @@ const theme = extendTheme({
 export default function App({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
+      <TopBar />
+      <Box marginBottom="2rem">
+        <Header />
+      </Box>  
       <Component {...pageProps} />
     </ChakraProvider>  
   )
