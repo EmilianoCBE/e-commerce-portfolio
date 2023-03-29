@@ -12,13 +12,14 @@ import logo_visa from "/public/logo_visa.png"
 import logo_mastercard from "/public/logo_mastercard.png"
 import logo_discover from "/public/logo_discover.png"
 import logo_paypal from "/public/logo_paypal.png"
+import { ProductsGrid } from "@/components/ProductsGrid";
 
 function Price({price}) {
   const currency = new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'}).format(price)
   return <Text fontSize="xl" fontWeight="bold">{currency}</Text>
 }
 
-export default function Product({product}) {
+export default function Product({product, relatedProducts}) {
   const {price, category, description, image} = product
   const [state, setState] = useState(false)
 
@@ -29,7 +30,7 @@ export default function Product({product}) {
   return (
     <>
       <PDPHeader product={product}/>
-      <Container as={Grid} gridTemplateColumns="558px 1fr" mt="2rem" gap="2rem">
+      <Container as={Grid} gridTemplateColumns="1fr 34.25rem" mt="2rem" mb="6rem" gap="2rem">
         <AspectRatio position='relative' ratio={1} maxW='100%' marginBottom='1rem'>
           <Image 
             src={image}
@@ -97,6 +98,13 @@ export default function Product({product}) {
 
         </Box>
       </Container>
+
+      <Container>
+        <Heading as="h3" textTransform="uppercase" fontSize="md" color="gray.500" mb="2rem">
+          Related Products
+        </Heading>
+        <ProductsGrid products={relatedProducts} />
+      </Container>
     </>
   )
 }
@@ -116,12 +124,22 @@ export async function getStaticPaths() {
   
   export async function getStaticProps(context) {
 
-    const id = context.params.slug.split('-').pop()
-    const product = await fetch(`https://fakestoreapi.com/products/${id}`).then(res => res.json())
+    const id = parseInt(context.params.slug.split('-').pop())
+    // const product = await fetch(`https://fakestoreapi.com/products/${id}`).then(res => res.json())
+    const products = await fetch("https://fakestoreapi.com/products").then(res => res.json())
+
+    const product = products.find((product) => {
+      return product.id === id
+    })
+
+    const relatedProducts = products.filter((item) => {
+      return item.category === product?.category && item.id === product?.id
+    })
 
     return {
       props: { 
-        product 
+        product,
+        relatedProducts
       },
     }
   }

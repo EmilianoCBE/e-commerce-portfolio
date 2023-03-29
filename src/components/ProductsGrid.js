@@ -3,7 +3,7 @@ import { Grid, Box } from "@chakra-ui/react";
 import Link from "next/link";
 import { ProductCard } from "./ProductCard";
 
-export function HomeProductsGrid(props) {
+export function ProductsGrid(props) {
     return (
             <Grid 
                 overflowX='scroll' 
