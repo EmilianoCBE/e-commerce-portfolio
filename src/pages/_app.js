@@ -1,6 +1,6 @@
 import { Header } from '@/components/Header'
 import { TopBar } from '@/components/TopBar'
-import { Box, ChakraProvider } from '@chakra-ui/react'
+import { Box, ChakraProvider, defineStyle } from '@chakra-ui/react'
 
 import { extendTheme } from '@chakra-ui/react'
 
@@ -44,6 +44,16 @@ export const buttonTheme = defineStyleConfig({
   }
 })
 
+const dividerTheme = defineStyleConfig({
+  variants: {
+    thick: {
+      borderWidth: '2px',
+      borderStyle: 'solid',
+      borderColor: "gray.300"
+    }
+  }
+})
+
 import '@fontsource/spartan/400.css'
 import '@fontsource/spartan/700.css'
 
@@ -67,6 +77,7 @@ const theme = extendTheme({
   },
   components: {
     Button: buttonTheme,
+    Divider: dividerTheme,
     Container: {
       baseStyle:{
         maxW: '71.375rem',
@@ -79,7 +90,7 @@ export default function App({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
       <TopBar />
-      <Box marginBottom="2rem">
+      <Box>
         <Header />
       </Box>  
       <Component {...pageProps} />

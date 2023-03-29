@@ -31,7 +31,7 @@ export default function Home({products, categories, productsGroupedByCategory}) 
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <Box as="main" mt="2rem">
         <Container>
           <HomeCategories categories={categories}/>
 
@@ -127,7 +127,7 @@ export default function Home({products, categories, productsGroupedByCategory}) 
             />
           </SimpleGrid>
         </Container>
-      </main>
+      </Box>
     </>
   )
 }
