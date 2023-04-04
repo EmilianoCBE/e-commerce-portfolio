@@ -1,9 +1,9 @@
-import { PDPHeader } from "@/components/PDPHeader";
-import { slugify } from "@/utils/slugify";
-import { AspectRatio, Box, Button, Container, Divider, Flex, Heading, Text, Grid } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { HeaderSecondary } from "@/components/HeaderSecondary";
+import { slugify } from "@/utils/sluglify";
+import { AspectRatio, Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, Container, Divider, Flex, Grid, Heading, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 import logo_stripe from "/public/logo_stripe.png"
 import logo_aes256 from "/public/logo_aes256.png"
@@ -13,6 +13,9 @@ import logo_mastercard from "/public/logo_mastercard.png"
 import logo_discover from "/public/logo_discover.png"
 import logo_paypal from "/public/logo_paypal.png"
 import { ProductsGrid } from "@/components/ProductsGrid";
+import { Rating } from "@/components/Rating";
+import { ShareIcon } from "@/icons/Share";
+import { ChevronRightIcon } from "@chakra-ui/icons";
 
 function Price({price}) {
   const currency = new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'}).format(price)
@@ -20,7 +23,7 @@ function Price({price}) {
 }
 
 export default function Product({product, relatedProducts}) {
-  const {price, description, image, rating} = product
+  const {price, description, image, category, id, rating, title} = product
     const [showPrice, setShowPrice] = useState(false)
 
     useEffect(() => {
@@ -29,7 +32,26 @@ export default function Product({product, relatedProducts}) {
 
   return (
     <>
-      <PDPHeader product={product}/>
+      <HeaderSecondary breadcrumb={[{
+        href: `/category/${category}`,
+        text: category
+      },{
+        href: '#',
+        text: title
+      }]}>
+        <Flex justifyContent="space-between" alignItems="center">
+            <Text>
+              <Flex gap="0.5rem" alignItems="baseline">
+                <Rating rate={rating.rate} />
+                <Text fontSize="sm">2 reviews</Text>
+              </Flex>
+            </Text>
+            <Flex gap="1rem" fontSize="sm">
+              <Text fontWeight="bold">Sku: {id}</Text>
+              <Text fontWeight="bold">Availability: In Stock</Text>
+            </Flex>
+        </Flex>
+      </HeaderSecondary>
       <Container as={Grid} gridTemplateColumns="1fr 34.25rem" mt="2rem" mb="6rem" gap="2rem">
         <AspectRatio position='relative' ratio={1} maxW='100%' marginBottom='1rem'>
           <Image 
