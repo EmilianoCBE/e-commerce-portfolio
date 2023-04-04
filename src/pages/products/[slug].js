@@ -1,6 +1,6 @@
 import { PDPHeader } from "@/components/PDPHeader";
 import { slugify } from "@/utils/slugify";
-import { AspectRatio, Box, Button, Container, Divider, Flex, Heading, Text } from "@chakra-ui/react";
+import { AspectRatio, Box, Button, Container, Divider, Flex, Heading, Text, Grid } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,12 +20,12 @@ function Price({price}) {
 }
 
 export default function Product({product, relatedProducts}) {
-  const {price, category, description, image} = product
-  const [state, setState] = useState(false)
+  const {price, description, image, rating} = product
+    const [showPrice, setShowPrice] = useState(false)
 
-  useEffect(() => {
-    setState(true)
-  }, [])
+    useEffect(() => {
+      setShowPrice(true)
+    }, [])
 
   return (
     <>
@@ -52,7 +52,7 @@ export default function Product({product, relatedProducts}) {
           <Divider my="2rem" variant="thick"/>
 
           <Flex alignItems="center" gap="1.5rem">
-            {state && <Price price={price}/>}
+            {showPrice && <Price price={price}/>}
             <Button>
               Add to cart
             </Button>
@@ -113,7 +113,7 @@ export async function getStaticPaths() {
   const products = await fetch("https://fakestoreapi.com/products").then(res => res.json())
 
   const slugs = products.map((product) => {
-    return `${slugify(product.title)}-${slugify(product.id)}`
+    return `${slugify(product.title)}-${product.id}`
   });
     return {
       // paths: [{ params: { slug: '1' } }, { params: { slug: '2' } }],
@@ -133,7 +133,7 @@ export async function getStaticPaths() {
     })
 
     const relatedProducts = products.filter((item) => {
-      return item.category === product?.category && item.id === product?.id
+      return item.category === product?.category && item.id !== product?.id;
     })
 
     return {
