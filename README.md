@@ -40,3 +40,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 # ecommerce with NextJS
 
 ![PORTFOLIO!](/public/projectImage.png)
+
+This project was made using the CSS framework called Chakra UI and also using NextJS for all the React components. It is a basic webpage with little funcionalities, but mostly it demonstrates the power of the component CSS library.
